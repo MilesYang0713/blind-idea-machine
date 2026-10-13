@@ -1,0 +1,33 @@
+.language-toggle {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 99px;
+  padding: 4px 9px;
+  color: var(--ink);
+  font: 11px var(--mono);
+  cursor: pointer;
+  letter-spacing: .03em;
+}
+
+.language-toggle:hover {
+  border-color: var(--ink);
+  background: var(--cream);
+}
+
+html[lang="en"] body {
+  font-family: 'DM Mono', 'Noto Sans SC', sans-serif;
+}
+
+html[lang="en"] .hero-row h1,
+html[lang="en"] .page > h1,
+html[lang="en"] .form-intro h1,
+html[lang="en"] .receipt h2,
+html[lang="en"] .vote-title {
+  letter-spacing: -.035em;
+}
+
+@media (max-width: 700px) {
+  .language-toggle { margin-left: auto; }
+  nav { margin-left: 0; }
+}
+
