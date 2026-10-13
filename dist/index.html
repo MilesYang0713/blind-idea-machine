@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="盲思机 MVP：先看想法，再看身份。" />
+    <title>盲思机 · Blind Idea Machine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="overrides.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <a class="brand" href="#home" data-route="home"><span class="brand-mark">◎</span><span>盲思机</span><em>beta</em></a>
+      <nav>
+        <button class="nav-link active" data-route="home">工作台</button>
+        <button class="nav-link" data-route="guide">机制</button>
+      </nav>
+      <button id="language-toggle" class="language-toggle" aria-label="Switch language">EN</button>
+      <div class="identity"><span class="live-dot"></span>资格已验证 <span class="divider"></span>身份已隔离</div>
+    </header>
+
+    <main>
+      <section id="home" class="page active">
+        <div class="hero-row">
+          <div>
+            <p class="eyebrow">BLIND DELIBERATION / 01</p>
+            <h1>先让想法<br /><i>失去主人。</i></h1>
+            <p class="lede">一个让团队先独立思考、再让决策者看见更干净信号的提案空间。</p>
+          </div>
+          <aside class="principle-card">
+            <p>本轮原则</p>
+            <strong>没有实时票数<br />没有参与名单<br />没有身份线索</strong>
+            <span>结果于截止时一并封存、揭晓。</span>
+          </aside>
+        </div>
+
+        <div class="stats">
+          <div><b>08</b><span>本周入队</span></div>
+          <div><b>03</b><span>盲审进行中</span></div>
+          <div><b>71%</b><span>平均有效参与</span></div>
+          <div><b>02</b><span>进入试点</span></div>
+        </div>
+
+        <div class="section-head">
+          <div><p class="eyebrow">开放的盲审</p><h2>只读提案本身</h2></div>
+          <span class="window">本轮于 10 月 16 日 17:00 封存</span>
+        </div>
+
+        <article class="proposal-card">
+          <div class="proposal-meta"><span class="pill">运营 · 本周批次</span><span>盲审编号 #024</span><span>已验证的受邀者可投 1 次</span></div>
+          <h3>把“客户问题”变成跨团队的 48 小时闭环，而不是等下周例会。</h3>
+          <p>当一线成员发现重复出现的客户障碍时，建立一个轻量的事件卡：只写现象、影响和证据。相关团队在 48 小时内给出“处理、研究或解释”的回应。先选择一个产品线试行四周。</p>
+          <div class="proposal-bottom"><span>AI 已移除 2 处可能的身份线索</span><button class="text-button" data-route="vote">进入独立判断 <span>→</span></button></div>
+        </article>
+
+        <div class="actions-grid">
+          <button class="action-card submit-card" data-route="submit">
+            <span class="circle-icon">＋</span><div><h3>投入一个想法</h3><p>机器将脱敏、签收，并在随机窗口内发布。</p></div><span class="arrow">↗</span>
+          </button>
+          <button class="action-card" data-route="results">
+            <span class="circle-icon">◒</span><div><h3>查看已封存回合</h3><p>只展示聚合信号与负责人的处理决定。</p></div><span class="arrow">↗</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="submit" class="page">
+        <button class="back" data-route="home">← 返回工作台</button>
+        <div class="form-layout">
+          <div class="form-intro"><p class="eyebrow">匿名投入 / 02</p><h1>交给机器，<br /><i>暂时不署名。</i></h1><p class="lede">提交者身份只用于生成加密收据与日后自愿领奖，不会出现在评审流程中。</p><div class="secure-note"><span>✦</span><p><b>AI 脱敏是辅助而非裁判。</b><br />发布前你能查看机器整理后的匿名版本。</p></div></div>
+          <form id="idea-form" class="idea-form">
+            <label>一句话标题<input id="title" required maxlength="80" placeholder="例如：把客户问题变成 48 小时闭环" /></label>
+            <label>你看到了什么问题？<textarea id="problem" required maxlength="500" placeholder="描述现象、影响与证据；避免写入个人、项目或部门身份线索。"></textarea></label>
+            <label>你的提议是什么？<textarea id="proposal" required maxlength="700" placeholder="先讲机制，再讲必要资源。"></textarea></label>
+            <label>希望别人重点推敲什么？<input id="question" maxlength="140" placeholder="例如：48 小时是否合理？" /></label>
+            <div class="sanitize-box"><div><span class="scan-icon">◌</span><b>AI 匿名预检（演示）</b></div><p id="sanitize-copy">填写内容后，机器会标记可能泄露身份的表述。</p></div>
+            <button class="primary" type="submit">密封并投入随机发布队列 <span>→</span></button>
+            <p class="form-foot">提交即表示接受：机器将在 1–5 个工作日内随机发布；发布前不显示你的名字或提交时间。</p>
+          </form>
+        </div>
+      </section>
+
+      <section id="receipt" class="page narrow">
+        <div class="receipt">
+          <div class="receipt-top"><span>BLIND IDEA MACHINE</span><span>SEALED / ✓</span></div>
+          <span class="receipt-symbol">◉</span>
+          <p class="eyebrow">已进入队列</p><h2>想法暂时没有主人。</h2><p id="receipt-copy">机器正在分离身份、整理表达，并计算随机发布时间。</p>
+          <div class="receipt-info"><div><span>匿名收据</span><b id="receipt-id">BIM-0000</b></div><div><span>预计发布窗口</span><b id="release-window">—</b></div></div>
+          <button class="primary" data-route="home">回到工作台 <span>→</span></button>
+        </div>
+      </section>
+
+      <section id="vote" class="page narrow">
+        <button class="back" data-route="home">← 返回工作台</button>
+        <p class="eyebrow">独立判断 / #024</p>
+        <h1 class="vote-title">把“客户问题”变成跨团队的 48 小时闭环，而不是等下周例会。</h1>
+        <div class="blind-copy"><p>当一线成员发现重复出现的客户障碍时，建立一个轻量的事件卡：只写现象、影响和证据。相关团队在 48 小时内给出“处理、研究或解释”的回应。先选择一个产品线试行四周。</p><span>已完成机器脱敏 · 当前轮次不显示任何他人观点</span></div>
+        <form id="vote-form" class="vote-form">
+          <fieldset><legend>基于提案本身，你的判断是？</legend><div class="choice-grid">
+            <label><input type="radio" name="vote" value="立即试验" required><span><b>值得立即试验</b><small>小范围、可逆地验证</small></span></label>
+            <label><input type="radio" name="vote" value="进一步研究"><span><b>值得进一步研究</b><small>方向成立，前提仍不清楚</small></span></label>
+            <label><input type="radio" name="vote" value="有启发"><span><b>有启发，可重组</b><small>不照做，但保留其中一部分</small></span></label>
+            <label><input type="radio" name="vote" value="当前不适合"><span><b>当前条件不适合</b><small>请指出限制或风险</small></span></label>
+          </div></fieldset>
+          <label>为什么？<textarea id="reason" required maxlength="500" placeholder="请写出收益、风险、前提或可保留的部分。机器会在封存后对理由做脱敏和聚类。"></textarea></label>
+          <div class="vote-privacy"><span>◒</span> 你的身份只用于确认“一人一票”；本轮结束前，任何人都看不到票数、理由或参与名单。</div>
+          <button class="primary" type="submit">封存我的独立判断 <span>→</span></button>
+        </form>
+      </section>
+
+      <section id="voted" class="page narrow">
+        <div class="receipt vote-confirm"><span class="receipt-symbol">✓</span><p class="eyebrow">判断已封存</p><h2>谢谢你没有追随任何人。</h2><p>你的理由会在回合结束后匿名归类；在此之前，连当前票数也不会被展示。</p><div class="seal-line"><span></span>等待 10 月 16 日 17:00<span></span></div><button class="primary" data-route="home">回到工作台 <span>→</span></button></div>
+      </section>
+
+      <section id="results" class="page">
+        <button class="back" data-route="home">← 返回工作台</button>
+        <p class="eyebrow">已封存回合 / 03</p><h1>结果是信号，<br /><i>不是命令。</i></h1>
+        <article class="result-card">
+          <div class="result-head"><div><span class="pill sealed">已封存</span><h2>减少每周例会中的重复状态同步</h2><p>盲审编号 #019 · 参与率 74% · 受邀名单与投票名单永久隔离</p></div><div class="score"><b>4.1</b><span>/ 5 试验信号</span></div></div>
+          <div class="bars"><div><span>值得立即试验</span><i><em style="width:52%"></em></i><b>52%</b></div><div><span>进一步研究</span><i><em style="width:28%"></em></i><b>28%</b></div><div><span>有启发，可重组</span><i><em style="width:14%"></em></i><b>14%</b></div><div><span>当前条件不适合</span><i><em style="width:6%"></em></i><b>6%</b></div></div>
+          <div class="themes"><p>机器归类出的匿名理由</p><div><span>减少信息重复</span><span>需明确异步记录责任</span><span>适合先选小团队</span><span>避免取消必要决策会</span></div></div>
+          <div class="owner-response"><span>决策负责人回应</span><p><b>进入 4 周小范围试点。</b> 先在两个跨职能小组测试异步状态模板；保留周会中的决策、风险与协作环节。</p><small>回应已记录 · 负责人身份在本回合不参与投票</small></div>
+          <div class="result-foot"><span>作者可在试点完成后自愿署名并申请奖励</span><button class="text-button" id="reveal-demo">查看匿名提案版本 →</button></div>
+        </article>
+      </section>
+
+      <section id="guide" class="page">
+        <p class="eyebrow">设计原则 / 04</p><h1>机器不替人<br /><i>做决定。</i></h1>
+        <div class="guide-grid"><article><span>01</span><h3>资格可验证</h3><p>组织账号只验证资格与一次投票；评审系统不展示身份。</p></article><article><span>02</span><h3>发布时间随机</h3><p>提案进入随机窗口，削弱“谁刚发生什么”的旁路线索。</p></article><article><span>03</span><h3>结果延迟</h3><p>在截止前没有票数、评论或参与状态可见，保护独立判断。</p></article><article><span>04</span><h3>理由有去处</h3><p>AI 脱敏、归类理由；负责人需选择采纳、试点、研究、合并或不采用。</p></article><article><span>05</span><h3>贡献可找回</h3><p>作者身份密封保存。成功后，作者可主动署名以获得认可或奖励。</p></article><article><span>06</span><h3>信号不等于命令</h3><p>投票是思考输入；领导仍承担资源、风险和最终决定的责任。</p></article></div>
+      </section>
+    </main>
+    <footer><span>盲思机 / MVP</span><span>先看想法，再看身份。</span><span>所有数据仅保存在此浏览器的演示空间。</span></footer>
+    <script src="app.js"></script>
+    <script src="localization.js"></script>
+  </body>
+</html>
+
