@@ -70,15 +70,45 @@
       <section id="submit" class="page">
         <button class="back" data-route="home">← 返回工作台</button>
         <div class="form-layout">
-          <div class="form-intro"><p class="eyebrow">匿名投入 / 02</p><h1>交给机器，<br /><i>暂时不署名。</i></h1><p class="lede">提交者身份只用于生成加密收据与日后自愿领奖，不会出现在评审流程中。</p><div class="secure-note"><span>✦</span><p><b>AI 脱敏是辅助而非裁判。</b><br />发布前你能查看机器整理后的匿名版本。</p></div></div>
+          <div class="form-intro"><p class="eyebrow">配置匿名投票 / 04</p><h1>先定义问题，<br /><i>再让机器隐去来源。</i></h1><p class="lede">发起人定义问题与规则；机器只发布脱敏后的版本。所有人在不知道是谁提出的前提下独立投票。</p><div class="secure-note"><span>✦</span><p><b>AI 脱敏是辅助而非裁判。</b><br />你必须确认问题和选项仍准确表达原意，投票才会进入队列。</p></div></div>
           <form id="idea-form" class="idea-form">
-            <label>一句话标题<input id="title" required maxlength="80" placeholder="例如：把客户问题变成 48 小时闭环" /></label>
-            <label>你看到了什么问题？<textarea id="problem" required maxlength="500" placeholder="描述现象、影响与证据；避免写入个人、项目或部门身份线索。"></textarea></label>
-            <label>你的提议是什么？<textarea id="proposal" required maxlength="700" placeholder="先讲机制，再讲必要资源。"></textarea></label>
-            <label>希望别人重点推敲什么？<input id="question" maxlength="140" placeholder="例如：48 小时是否合理？" /></label>
-            <div class="sanitize-box"><div><span class="scan-icon">◌</span><b>AI 匿名预检（演示）</b></div><p id="sanitize-copy">填写内容后，机器会标记可能泄露身份的表述。</p></div>
-            <button class="primary" type="submit">密封并投入随机发布队列 <span>→</span></button>
-            <p class="form-foot">提交即表示接受：机器将在 1–5 个工作日内随机发布；发布前不显示你的名字或提交时间。</p>
+            <section class="config-step"><div class="step-label"><span>01</span><b>问题</b></div>
+              <label>请写出需要集体判断的问题<textarea id="problem" required maxlength="500" placeholder="例如：我们应如何安排每周的跨团队状态同步？"></textarea></label>
+              <p class="field-help">只写问题与必要背景；请不要写出姓名、部门、项目名或提交时间。</p>
+            </section>
+
+            <section class="config-step"><div class="step-label"><span>02</span><b>投票结构</b></div>
+              <p class="field-label">选择判断方式</p>
+              <div class="type-picker" role="radiogroup" aria-label="投票结构">
+                <label><input type="radio" name="poll-type" value="polar" checked><span><b>两极分化</b><small>支持 / 不支持</small></span></label>
+                <label><input type="radio" name="poll-type" value="single"><span><b>多项选一</b><small>每人选一个</small></span></label>
+                <label><input type="radio" name="poll-type" value="multiple"><span><b>多选多</b><small>每人可选多个</small></span></label>
+              </div>
+              <div class="option-editor"><div class="option-editor-head"><b>可编辑选项</b><span id="option-rule">每位参与者选择 1 项</span></div><div id="option-list" class="option-list"></div><button id="add-option" class="add-option" type="button">＋ 添加选项</button></div>
+            </section>
+
+            <section class="config-step"><div class="step-label"><span>03</span><b>AI 脱敏与核实</b></div>
+              <div class="sanitize-box"><div><span class="scan-icon">◌</span><b>AI 匿名预检（演示）</b></div><p id="sanitize-copy">填写问题和选项后，机器会标记可能泄露身份的表述。</p></div>
+              <button id="review-anonymity" class="secondary" type="button">生成脱敏预览 <span>→</span></button>
+              <div id="review-panel" class="review-panel" hidden><p class="review-kicker">机器将发布此版本</p><p id="review-problem" class="review-question"></p><div id="review-options" class="review-options"></div><label class="confirm-line"><input id="confirm-meaning" type="checkbox" required><span>我确认：脱敏后仍准确表达我的问题与选项，不改变我的原意。</span></label></div>
+            </section>
+
+            <section class="config-step"><div class="step-label"><span>04</span><b>开始与结束</b></div>
+              <p class="field-label">何时开始投票？</p>
+              <div class="rule-stack" id="start-rules">
+                <label class="rule-choice"><input type="radio" name="start-mode" value="random" checked><span class="radio-dot"></span><span class="rule-title"><b>随机开始</b><small>在你设定的窗口内，由机器随机释放，减少时间线索。</small></span><span class="rule-details"><label>随机窗口<input id="random-window" value="1–5 个工作日" maxlength="30"></label></span></label>
+                <label class="rule-choice"><input type="radio" name="start-mode" value="now"><span class="radio-dot"></span><span class="rule-title"><b>立即开始</b><small>完成确认后，合资格参与者立刻可见。</small></span><span class="rule-details"><em>立即发布仍不会显示发起人或当前投票结果。</em></span></label>
+              </div>
+              <p class="field-label close-label">何时结束投票？</p>
+              <div class="rule-stack" id="close-rules">
+                <label class="rule-choice"><input type="radio" name="close-rule" value="deadline" checked><span class="radio-dot"></span><span class="rule-title"><b>固定截止时间</b><small>到预设时间统一封存与揭晓。</small></span><span class="rule-details"><label>截止日期与时间<input id="deadline" type="datetime-local"></label></span></label>
+                <label class="rule-choice"><input type="radio" name="close-rule" value="all-voted"><span class="radio-dot"></span><span class="rule-title"><b>所有受邀者已投票</b><small>名单中的每人完成后立即封存。</small></span><span class="rule-details"><em>不会显示是谁尚未投票；系统只在后台校验完成状态。</em></span></label>
+                <label class="rule-choice"><input type="radio" name="close-rule" value="quorum"><span class="radio-dot"></span><span class="rule-title"><b>达到参与门槛</b><small>达到最小有效参与人数或比例后结束。</small></span><span class="rule-details two-fields"><label>最少参与比例<input id="quorum-percent" type="number" value="70" min="1" max="100"><small>%</small></label><label>至少人数<input id="quorum-count" type="number" value="20" min="1"></label></span></label>
+                <label class="rule-choice"><input type="radio" name="close-rule" value="extend"><span class="radio-dot"></span><span class="rule-title"><b>截止时不足门槛则延时</b><small>先按固定时间截止；不足门槛时自动延长一次。</small></span><span class="rule-details two-fields"><label>最低参与比例<input id="extend-percent" type="number" value="70" min="1" max="100"><small>%</small></label><label>自动延长<input id="extend-days" type="number" value="2" min="1" max="14"><small>天</small></label></span></label>
+              </div>
+            </section>
+            <button class="primary" type="submit">密封配置并创建投票回合 <span>→</span></button>
+            <p class="form-foot">演示版本只保存在本浏览器。真实版本应将资格验证、随机开始、封存与延时条件交给服务端审计。</p>
           </form>
         </div>
       </section>
