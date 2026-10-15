@@ -99,7 +99,61 @@
     '信号不等于命令': 'A signal is not an order',
     '投票是思考输入；领导仍承担资源、风险和最终决定的责任。': 'Voting is thinking input; leaders remain responsible for resources, risk, and the final decision.',
     '先看想法，再看身份。': 'See the idea before the identity.',
-    '所有数据仅保存在此浏览器的演示空间。': 'All demo data stays only in this browser.'
+    '所有数据仅保存在此浏览器的演示空间。': 'All demo data stays only in this browser.',
+    '配置匿名投票 / 04': 'Configure a blind vote / 04',
+    '先定义问题，': 'Define the question first,',
+    '再让机器隐去来源。': 'then let the machine hide its origin.',
+    '发起人定义问题与规则；机器只发布脱敏后的版本。所有人在不知道是谁提出的前提下独立投票。': 'The initiator defines the question and rules; the machine publishes only a redacted version. Everyone votes independently without knowing who raised it.',
+    '你必须确认问题和选项仍准确表达原意，投票才会进入队列。': 'You must confirm that the redacted question and options still express the original meaning before the vote enters the queue.',
+    '问题': 'Question',
+    '请写出需要集体判断的问题': 'Write the question that needs collective judgment',
+    '只写问题与必要背景；请不要写出姓名、部门、项目名或提交时间。': 'Write only the question and necessary context. Do not include names, departments, projects, or submission times.',
+    '投票结构': 'Vote structure',
+    '选择判断方式': 'Choose a judgment format',
+    '两极分化': 'Polar choice',
+    '支持 / 不支持': 'Support / do not support',
+    '多项选一': 'Choose one',
+    '每人选一个': 'One choice per person',
+    '多选多': 'Choose many',
+    '每人可选多个': 'Multiple choices per person',
+    '可编辑选项': 'Editable options',
+    '每位参与者选择 1 项': 'Each participant chooses 1 option',
+    '＋ 添加选项': '＋ Add option',
+    'AI 脱敏与核实': 'AI redaction and confirmation',
+    '填写问题和选项后，机器会标记可能泄露身份的表述。': 'After you enter the question and options, the machine flags wording that may reveal identity.',
+    '生成脱敏预览': 'Generate redacted preview',
+    '机器将发布此版本': 'Version the machine will publish',
+    '我确认：脱敏后仍准确表达我的问题与选项，不改变我的原意。': 'I confirm that the redacted version still expresses my question and options accurately, without changing my intent.',
+    '开始与结束': 'Start and close',
+    '何时开始投票？': 'When should voting start?',
+    '随机开始': 'Random start',
+    '在你设定的窗口内，由机器随机释放，减少时间线索。': 'The machine releases it at a random moment inside your window, reducing timing clues.',
+    '随机窗口': 'Random window',
+    '立即开始': 'Start now',
+    '完成确认后，合资格参与者立刻可见。': 'Eligible participants can see it immediately after confirmation.',
+    '立即发布仍不会显示发起人或当前投票结果。': 'Immediate release still does not show the initiator or live vote results.',
+    '何时结束投票？': 'When should voting close?',
+    '固定截止时间': 'Fixed deadline',
+    '到预设时间统一封存与揭晓。': 'Seal and reveal together at the scheduled time.',
+    '截止日期与时间': 'Deadline date and time',
+    '所有受邀者已投票': 'All invitees have voted',
+    '名单中的每人完成后立即封存。': 'Seal immediately when everyone on the list has finished.',
+    '不会显示是谁尚未投票；系统只在后台校验完成状态。': 'The system does not show who has not voted; it checks completion only in the background.',
+    '达到参与门槛': 'Reach a participation threshold',
+    '达到最小有效参与人数或比例后结束。': 'Close after reaching a minimum valid participant count or percentage.',
+    '最少参与比例': 'Minimum participation',
+    '至少人数': 'Minimum people',
+    '截止时不足门槛则延时': 'Extend if below threshold at deadline',
+    '先按固定时间截止；不足门槛时自动延长一次。': 'First close at a fixed time; extend once automatically if below threshold.',
+    '最低参与比例': 'Minimum participation',
+    '自动延长': 'Automatic extension',
+    '密封配置并创建投票回合': 'Seal configuration and create the voting round',
+    '演示版本只保存在本浏览器。真实版本应将资格验证、随机开始、封存与延时条件交给服务端审计。': 'This demo stays only in this browser. A production version should place eligibility checks, random starts, sealing, and extension rules under server-side audit.',
+    '已进入队列': 'Round created',
+    '想法暂时没有主人。': 'The question now has no owner.',
+    '匿名收据': 'Anonymous receipt',
+    '预计发布窗口': 'Start and close rules',
+    '天': 'days'
   };
 
   const placeholderMap = {
@@ -107,7 +161,8 @@
     '描述现象、影响与证据；避免写入个人、项目或部门身份线索。': 'Describe the observation, impact, and evidence. Avoid personal, project, or department identity clues.',
     '先讲机制，再讲必要资源。': 'Describe the mechanism first, then the resources required.',
     '例如：48 小时是否合理？': 'e.g. Is 48 hours realistic?',
-    '请写出收益、风险、前提或可保留的部分。机器会在封存后对理由做脱敏和聚类。': 'Describe benefits, risks, assumptions, or what should be retained. The machine redacts and groups rationales after sealing.'
+    '请写出收益、风险、前提或可保留的部分。机器会在封存后对理由做脱敏和聚类。': 'Describe benefits, risks, assumptions, or what should be retained. The machine redacts and groups rationales after sealing.',
+    '例如：我们应如何安排每周的跨团队状态同步？': 'e.g. How should we structure weekly cross-team status updates?'
   };
   const enToZh = Object.fromEntries(Object.entries(zhToEn).map(([zh, en]) => [en, zh]));
   const enPlaceholders = Object.fromEntries(Object.entries(placeholderMap).map(([zh, en]) => [en, zh]));
@@ -136,6 +191,7 @@
     toggle.textContent = next === 'en' ? '中文' : 'EN';
     toggle.setAttribute('aria-label', next === 'en' ? '切换到中文' : 'Switch language');
     localStorage.setItem('blindIdeaLocale', next);
+    window.dispatchEvent(new CustomEvent('blindIdeaLocaleChange', { detail: { locale: next } }));
   }
 
   toggle.addEventListener('click', () => setLocale(locale === 'zh' ? 'en' : 'zh'));
